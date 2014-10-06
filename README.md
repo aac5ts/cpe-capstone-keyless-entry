@@ -1,7 +1,7 @@
 Capstone
 ========
 
-Fourth Year CPE Capstone Project at UVA
+Fourth Year CPE Capstone Project at the University of Virginia
 
 As university students, we all have busy schedules that balance a mix of classes, school work, and extracurriculars. We have busy days of running between classes, meetings, group projects, and libraries. Many of us live in group apartments or houses and are in and out of our homes several times a day. We also may only see our roommates when we leave in the morning, and when we get home at night. It can be difficult to keep track of roommates schedules, and when your home is occupied or not. It is easy to leave the house unsecured, or to lock out a roommate who did not take their key. A wireless and Internet connected home monitoring and control system would appeal to college students who want control of their home while away from home.
 
