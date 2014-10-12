@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 	$user_name = "ac8wv";
 	$pass_word = "Budail_246";
-	$database = "ecomtest";
+	$database = "Capstone";
 	$server =  "dbm2.itc.virginia.edu"; //"localhost"; 
 
 	$db_handle = mysql_connect($server, $user_name, $pass_word);

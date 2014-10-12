@@ -1,4 +1,4 @@
-<?php include('scripts/signup1.php'); ?>
+<?php include('scripts/signup.php'); ?>
 <?php
 include('config.php');?>
 <?php 

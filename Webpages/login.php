@@ -41,7 +41,7 @@ Password: <INPUT TYPE = 'password' Name ='password'  value="<?PHP print $pword;?
 
 </FORM>
 <div class="login-help">
-    <a href="#">Register</a> • <a href="#">Forgot Password</a>
+    <a href="signup.php">Register</a> 
   </div>
 </div>
 
