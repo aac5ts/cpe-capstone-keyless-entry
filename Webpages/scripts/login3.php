@@ -32,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	//==========================================
 	//	CONNECT TO THE LOCAL DATABASE
 	//==========================================
-$user_name = "ac8wv";
-	$pass_word = "Budail_246";
+$user_name = //add username
+	$pass_word = //add password
 	$database = "Capstone";
 	$server =  "dbm2.itc.virginia.edu"; //"localhost";
 
