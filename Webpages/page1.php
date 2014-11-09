@@ -126,7 +126,7 @@ if(!isset($_SESSION["login"]))
 </div>
 
 </center></p>
-<center><a id= "test"> </a> </center>
+<center><a id= "lockstatus"> </a> </center>
 <!--<button type = "button" onclick="check()">Lock Door</button> <a id = "lock"></a> 
 <button type = "button" onclick="uncheck()">Unlock Door</button> <a id = "unlock"></a> -->
 
@@ -147,15 +147,50 @@ function myFunction() {
     var checkID = document.getElementById("myonoffswitch") ; 
     if (checkID.checked == true) 
     {
-    document.getElementById("test").innerHTML = "Door is Locked &#x2713"; 
+     document.getElementById("lockstatus").innerHTML = "Door is Locked &#x2713";
+    var value = 1; 
+    var agentAction =JSON.stringify(value); 
+    $.ajax({
+        type: "POST", 
+        url: "https://agent.electricimp.com/YNDvfcWn8MYH", 
+        data: agentAction,
+        dataType: "json", 
+        success: function(agentMsg) {
+            document.getElementById("lockstatus").innerHTML = "Door is Locked &#x2713";
+        }, 
+         error: function(err) {
+                        console.log("err"+ err.status)
+                    }
+
+    }); 
+    
+
     }
 
     if (checkID.checked == false)
     {
-    document.getElementById("test").innerHTML ="Door is Unlocked &#x2713"; 
+    document.getElementById("lockstatus").innerHTML ="Door is Unlocked &#x2713"; 
+    var value = 0; 
+    var agentAction =JSON.stringify(value); 
+    $.ajax({
+        type: "POST", 
+        url: "https://agent.electricimp.com/YNDvfcWn8MYH", 
+        data: agentAction,
+        dataType: "json", 
+        success: function(agentMsg) {
+            document.getElementById("lockstatus").innerHTML = "Door is Unlocked &#x2713";
+        }, 
+         error: function(err) {
+                        console.log("err"+ err.status)
+                    }
+
+    }); 
+    
     }
 }
 </script>
+
+ 
 
 
 
@@ -168,20 +203,6 @@ $('#example_tree').find('SPAN').click(function(e){
 });
 </script>
 
-<!--<script>
-function check() {
- 
-document.getElementById("lock").innerHTML = "Locked &#x2713";
-document.getElementById("unlock").innerHTML = "";  
-
-}
-function uncheck() {
-document.getElementById("unlock").innerHTML = "Unlocked &#x2713";
-document.getElementById("lock").innerHTML = "";  
-
-}
-</script>
--->
 
 
         
