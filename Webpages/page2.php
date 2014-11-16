@@ -15,17 +15,21 @@ unset($_SESSION["login"]);
 
   <title>Log Out</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
   <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 
     <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
-
+    <link rel="stylesheet" href="css/base.css"media="screen" type="text/css"/>
+  <link rel="stylesheet" href="css/skeleton.css"media="screen" type="text/css"/>
+  <link rel="stylesheet" href="css/layout.css"media="screen" type="text/css"/>
 </head>
 <body>
 
   <div class="login-card">
     <h1>User Logged Out</h1><br>
 
-       <p><center><p><a href="login.php">Click here</a> to login again.</center>
+       <p><center><p><a href="login.php">Click here to login again.</a></center>
         
 
 

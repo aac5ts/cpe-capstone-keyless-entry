@@ -20,7 +20,7 @@ if(!isset($_SESSION["login"]))
 
   <meta charset="UTF-8">
 
-  <title>Signup</title>
+  <title>Join</title>
 
   <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 
@@ -118,14 +118,20 @@ input#pwd {
 <body>
 	
   <div class="login-card">
-    <h1>Register</h1><br>
 
-       <p><center>Please enter a user name and password and click Register. </center>
-        
-        <p><FORM NAME ="form1" METHOD ="POST" ACTION ="signup.php">
+    
 
-Username: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" maxlength="20"><br />
-<p><label style="float:left;margin-right:10px;">Password: </label><INPUT TYPE = 'password' id= "pwd" Name ='password'  value="<?PHP print $pword;?>" maxlength="16"> <br />
+    <h1>Register or Join a Group</h1><br>
+
+       <p><center>Please select a group to join or create a group. </center>
+        <UL id="example_tree">
+        <span><h2> Create a Group </h2></span>
+<span>        <p><FORM NAME ="form1" METHOD ="POST" ACTION ="signup.php">
+
+Groupname: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" maxlength="20"><br />
+
+Imp ID: <INPUT TYPE = 'TEXT' Name ='impid'  value="<?PHP print $impid;?>" maxlength="20"><br />
+<p><label style="float:left;margin-right:10px;">Group Password: </label><INPUT TYPE = 'password' id= "pwd" Name ='password'  value="<?PHP print $pword;?>" maxlength="16"> <br />
 
  <div id="pwd_strength_wrap">
             <div id="passwordDescription">Password not entered</div>
@@ -137,7 +143,7 @@ Username: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" m
                             <li class="invalid" id="pnum">At least 1 number</li>
                             <li class="invalid" id="capital">At least 1 lowercase &amp; 1 uppercase letter</li>
                             <li class="invalid" id="spchar">At least 1 special character</li>
-                    </ul>
+                    
             </div><!-- END pswd_info -->
     </div><!-- END pwd_strength_wrap -->
 
@@ -149,12 +155,33 @@ Username: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" m
 <br />
 
 <P align="center">
-<INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Register">
-
+<INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Register Group">
+</span></UL>
 
 </FORM>
 
+
+
+<UL id="example_tree1">
+        <span><h2> Join a Group </h2></span>
+<span>  <p><FORM NAME ="form1" METHOD ="POST" ACTION ="signup.php">
+
+Groupname: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" maxlength="20"><br />
+
+<p><label style="float:left;margin-right:10px;">Group Password: </label><INPUT TYPE = 'password' id= "pwd" Name ='password'  value="<?PHP print $pword;?>" maxlength="16"> <br />
+
+<P align="center">
+<INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Join Group">
+
+</span>
+</FORM>
+</UL>
+<p align="center"><a href='page1.php'>Main Page </a> | <a href='page2.php'>Logout</a></p>
 </div>
+
+
+
+
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
@@ -218,6 +245,23 @@ $("input#pwd").on("focus keyup", function () {
  
 $("input#pwd").blur(function () {
         $("#pwd_strength_wrap").fadeOut(400);
+});
+</script>
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$('#example_tree').find('SPAN').click(function(e){
+    $(this).parent().find('UL').toggle();
+});
+});
+</script>
+
+<script type="text/javascript">
+$(function(){
+$('#example_tree1').find('SPAN').click(function(e){
+    $(this).parent().find('UL').toggle();
+});
 });
 </script>
 

@@ -18,6 +18,8 @@ if(!isset($_SESSION["login"]))
   <meta charset="UTF-8">
 
   <title>Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 <style> 
 .onoffswitch {
     position: relative; width: 130px;
@@ -69,11 +71,14 @@ if(!isset($_SESSION["login"]))
 	<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 
     	<link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+         <link rel="stylesheet" href="css/base.css"media="screen" type="text/css"/>
+  <link rel="stylesheet" href="css/skeleton.css"media="screen" type="text/css"/>
+  <link rel="stylesheet" href="css/layout.css"media="screen" type="text/css"/>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 <script>
         $( function() {   
-            var externalURL = "YNDvfcWn8MYH";	//"H-1QuKQ0IZZu";
+            var externalURL = "H-1QuKQ0IZZu";//"YNDvfcWn8MYH";	
             var pollRate ="1000";
 
             function poll(){
@@ -87,11 +92,16 @@ if(!isset($_SESSION["login"]))
 
                         // jQuery find "pin1" id and overwrite its data with "pin1" key value in agentMsg
                         
-                       if (agentMsg.sensor == 0)
-				{$("#pin7").html("off");}
+            if (agentMsg.sensor == 0)
+				 {$("#pin7").html("off");}
 			else if (agentMsg.sensor == 1)
 				 {$("#pin7").html("on"); }
-			else {$("#pin7").html("unavailable");}
+			else if (agentMsg.sensor == 117) 
+                 {$("#lockstatus").html("Door is Unlocked &#x2713");}
+            else if (agentMsg.sensor == 108)
+                {$("#lockstatus").html("Door is Locked &#x2713"); }   
+            else
+                {$("#pin7").html("unavailable");}
                        
                     },
                     error: function(err) {
@@ -110,7 +120,8 @@ if(!isset($_SESSION["login"]))
     </script>
 </head>
 <body>
-
+ <div class="container">
+    <div class="sixteen columns">
   <div class="login-card">
     <h1>Welcome</h1><br>
 
@@ -135,7 +146,9 @@ if(!isset($_SESSION["login"]))
 	<LI><span>Check Sensor Status</span>
 	  <UL>Sensor is <span id = "pin7"> </span> </UL>
 	</LI>
-	<LI><span>Check Lock Status</span></LI>
+	<!--<LI><span>Check Lock Status</span>
+        <UL>Door is <span id = "pin8"> </span> </UL>
+    </LI> -->
 	
 </UL>
 
@@ -156,7 +169,7 @@ function myFunction() {
         data: agentAction,
         dataType: "json", 
         success: function(agentMsg) {
-            document.getElementById("lockstatus").innerHTML = "Door is Locked &#x2713";
+           // document.getElementById("lockstatus").innerHTML = "Door is Locked &#x2713";
         }, 
          error: function(err) {
                         console.log("err"+ err.status)
@@ -178,7 +191,7 @@ function myFunction() {
         data: agentAction,
         dataType: "json", 
         success: function(agentMsg) {
-            document.getElementById("lockstatus").innerHTML = "Door is Unlocked &#x2713";
+           // document.getElementById("lockstatus").innerHTML = "Door is Unlocked &#x2713";
         }, 
          error: function(err) {
                         console.log("err"+ err.status)
@@ -208,10 +221,10 @@ $('#example_tree').find('SPAN').click(function(e){
         
 <br />   
 <P align="center">
-
-<a href='page2.php'>Logout</a>
+<a href='register.php'> Create/Join Group </a> |
+<a href='page2.php'>Logout</a> </p>
 
 </div>
-
+</div> </div>
 </body>
 </html>
