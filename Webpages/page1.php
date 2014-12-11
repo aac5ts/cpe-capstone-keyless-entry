@@ -78,7 +78,7 @@ if(!isset($_SESSION["login"]))
 	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 <script>
         $( function() {   
-            var externalURL = "H-1QuKQ0IZZu";//"YNDvfcWn8MYH";	
+            var externalURL =  "H-1QuKQ0IZZu";//"YNDvfcWn8MYH"; 
             var pollRate ="1000";
 
             function poll(){
@@ -92,16 +92,18 @@ if(!isset($_SESSION["login"]))
 
                         // jQuery find "pin1" id and overwrite its data with "pin1" key value in agentMsg
                         
-            if (agentMsg.sensor == 0)
-				 {$("#pin7").html("off");}
-			else if (agentMsg.sensor == 1)
-				 {$("#pin7").html("on"); }
-			else if (agentMsg.sensor == 117) 
+            if (agentMsg.sensor == 6)
+				 {$("#pin7").html("No motion sensed");}
+			else if (agentMsg.sensor == 9)
+				 {$("#pin7").html("Motion sensed"); }
+			else if (agentMsg.sensor == 5) 
                  {$("#lockstatus").html("Door is Unlocked &#x2713");}
-            else if (agentMsg.sensor == 108)
-                {$("#lockstatus").html("Door is Locked &#x2713"); }   
+            else if (agentMsg.sensor == 8)
+                {$("#lockstatus").html("Door is Locked &#x2713"); } 
+            else if (agentMsg.sensor == 110)
+                {$("#lockstatus").html("Unsuccessful, please try again &#x2717"); }   
             else
-                {$("#pin7").html("unavailable");}
+                {$("#pin7").html("Sensor is unavailable");}
                        
                     },
                     error: function(err) {
@@ -144,7 +146,7 @@ if(!isset($_SESSION["login"]))
 
     <UL id="example_tree">
 	<LI><span>Check Sensor Status</span>
-	  <UL>Sensor is <span id = "pin7"> </span> </UL>
+	  <UL><span id = "pin7"> </span> </UL>
 	</LI>
 	<!--<LI><span>Check Lock Status</span>
         <UL>Door is <span id = "pin8"> </span> </UL>
@@ -160,12 +162,12 @@ function myFunction() {
     var checkID = document.getElementById("myonoffswitch") ; 
     if (checkID.checked == true) 
     {
-     document.getElementById("lockstatus").innerHTML = "Door is Locked &#x2713";
+    // document.getElementById("lockstatus").innerHTML = "Door is Locked &#x2713";
     var value = 1; 
     var agentAction =JSON.stringify(value); 
     $.ajax({
         type: "POST", 
-        url: "https://agent.electricimp.com/YNDvfcWn8MYH", 
+        url: "https://agent.electricimp.com/H-1QuKQ0IZZu", 
         data: agentAction,
         dataType: "json", 
         success: function(agentMsg) {
@@ -182,15 +184,15 @@ function myFunction() {
 
     if (checkID.checked == false)
     {
-    document.getElementById("lockstatus").innerHTML ="Door is Unlocked &#x2713"; 
+  //  document.getElementById("lockstatus").innerHTML ="Door is Unlocked &#x2713"; 
     var value = 0; 
     var agentAction =JSON.stringify(value); 
     $.ajax({
         type: "POST", 
-        url: "https://agent.electricimp.com/YNDvfcWn8MYH", 
+        url: "https://agent.electricimp.com/H-1QuKQ0IZZu", 
         data: agentAction,
         dataType: "json", 
-        success: function(agentMsg) {
+        success: function(agentMsg) { 
            // document.getElementById("lockstatus").innerHTML = "Door is Unlocked &#x2713";
         }, 
          error: function(err) {
